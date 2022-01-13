@@ -1,38 +1,37 @@
-const { Client } = require('pg')
+const { Client } = require('pg');
 
 let client;
 
 const connectionOptions = {
-    production: {
-        host: 'localhost',
-        database: 'test',
-        port: 5432,
-    },
+	production: {
+		host: 'localhost',
+		database: 'test',
+		port: 5432,
+	},
 
-    development: {
-        host: 'localhost',
-        database: 'test',
-        port: 5432,
-    },
+	development: {
+		host: 'localhost',
+		database: 'test',
+		port: 5432,
+	},
 
-    test: {
-        host: process.env.POSTGRES_HOST,
-        // database: 'postgres',
-        port: process.env.POSTGRES_PORT,
-    }
-}
-
+	test: {
+		host: process.env.POSTGRES_HOST,
+		// database: 'postgres',
+		port: process.env.POSTGRES_PORT,
+		password: 'postgres',
+	},
+};
 
 async function getClient() {
-    // singleton
-    if (client === undefined) {
-        const { NODE_ENV } = process.env
-        client = new Client(connectionOptions[NODE_ENV] ?? connectionOptions.development)
-        await client.connect()
-    }
+	// singleton
+	if (client === undefined) {
+		const { NODE_ENV } = process.env;
+		client = new Client(connectionOptions[NODE_ENV] ?? connectionOptions.development);
+		await client.connect();
+	}
 
-    return client
+	return client;
 }
 
-
-module.exports = { getClient }
+module.exports = { getClient };
