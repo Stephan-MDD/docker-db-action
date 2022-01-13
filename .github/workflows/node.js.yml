@@ -37,7 +37,7 @@ jobs:
         run: npm ci
         
       - name: Create and Populate Database
-        run: npm run setup-db
+        run: npm run db-setup
 
       - name: Run Tests
         run: npm test
