@@ -38,6 +38,12 @@ jobs:
         
       - name: Create and Populate Database
         run: npm run db-setup
+        
+        env:
+          # The hostname used to communicate with the PostgreSQL service container
+          POSTGRES_HOST: localhost
+          # The default PostgreSQL port
+          POSTGRES_PORT: 5432
 
       - name: Run Tests
         run: npm test
