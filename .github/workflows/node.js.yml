@@ -34,10 +34,10 @@ jobs:
       # Performs a clean installation of all dependencies in the `package.json` file
       # For more information, see https://docs.npmjs.com/cli/ci.html
       - name: Install dependencies
-        run: npm ci
+        run: yarn
 
       - name: Run Tests
-        run: npm test
+        run: yarn test
 
         env:
           # The hostname used to communicate with the PostgreSQL service container
