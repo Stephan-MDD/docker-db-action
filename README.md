@@ -1,0 +1,2 @@
+- setup pg db (dev/prod/test)
+- 
