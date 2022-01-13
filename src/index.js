@@ -1,4 +1,4 @@
-const { getClient } = require('./database');
+const { getClient } = require('./database/connection');
 
 async function getPosts() {
 	const client = await getClient();
