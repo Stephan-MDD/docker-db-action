@@ -1,10 +1,10 @@
 const { getClient } = require('./connection');
 
-(async () => {
-    const client = await getClient();
+async function setup() {
+	const client = await getClient();
 
-    try {
-        // drop table
+	try {
+		// drop table
 		const result = await client.query(`
             CREATE TABLE Persons (
                 name varchar(255),
@@ -21,4 +21,6 @@ const { getClient } = require('./connection');
 	} finally {
 		await client.end();
 	}
-})()
+}
+
+module.exports = { setup }
