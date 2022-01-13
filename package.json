@@ -8,7 +8,7 @@
     "pg": "^8.7.1"
   },
   "scripts": {
-    "db-setup": "echo 'run db setup'",
+    "db-setup": "node src/database/setup.js",
     "start": "node src/index.js",
     "test": "jest --detectOpenHandles"
   }

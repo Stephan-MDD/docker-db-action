@@ -1,4 +1,4 @@
-const { getPosts, getTime } = require('../src/index')
+const { getPersons } = require('../src/index')
 
 // move to global before
 beforeAll(() => {
@@ -10,13 +10,7 @@ afterAll(async () => {
     // destroy database
 })
 
-// test('get posts and validate amount', async () => {
-//     const posts = await getPosts()
-//     expect(posts.length).toBe(2);
-// });
-
-test('get posts and validate amount', async () => {
-    const time = await getTime()
-    console.log(time);
-    expect(time.length).toBe(1);
+test('get persons and validate amount', async () => {
+    const persons = await getPersons()
+    expect(persons.length).toBe(2);
 });

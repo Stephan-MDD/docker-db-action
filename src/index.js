@@ -1,10 +1,10 @@
 const { getClient } = require('./database/connection');
 
-async function getPosts() {
+async function getPersons() {
 	const client = await getClient();
 
 	try {
-		const result = await client.query('SELECT * FROM posts');
+		const result = await client.query('SELECT * FROM Persons');
 		return result.rows;
 	} catch (error) {
 		console.error(error);
@@ -13,17 +13,4 @@ async function getPosts() {
 	}
 }
 
-async function getTime() {
-	const client = await getClient();
-
-	try {
-		const result = await client.query('SELECT NOW()');
-		return result.rows;
-	} catch (error) {
-		console.error(error);
-	} finally {
-		await client.end();
-	}
-}
-
-module.exports = { getPosts, getTime };
+module.exports = { getPersons };
