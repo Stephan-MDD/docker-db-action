@@ -1,10 +1,14 @@
 const { getClient } = require('./connection');
 
+/*
+    1. create tables
+    2. add simple data
+*/
+
 async function setup() {
 	const client = await getClient();
 
 	try {
-		// drop table
 		const result = await client.query(`
             CREATE TABLE Persons (
                 name varchar(255),
@@ -18,8 +22,6 @@ async function setup() {
 		return result.rows;
 	} catch (error) {
 		console.error(error);
-	} finally {
-		// await client.end();
 	}
 }
 
