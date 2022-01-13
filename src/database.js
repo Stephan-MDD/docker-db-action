@@ -17,7 +17,7 @@ const connectionOptions = {
 
     test: {
         host: process.env.POSTGRES_HOST,
-        database: 'postgres',
+        // database: 'postgres',
         port: process.env.POSTGRES_PORT,
     }
 }
