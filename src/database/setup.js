@@ -19,7 +19,7 @@ async function setup() {
 	} catch (error) {
 		console.error(error);
 	} finally {
-		await client.end();
+		// await client.end();
 	}
 }
 
