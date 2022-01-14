@@ -1,9 +1,7 @@
 const { getPersons } = require('../src/index');
-const { setup } = require('../src/database/setup');
 
 // move to global before
 beforeAll(async () => {
-	await setup();
 	// populate database
 });
 

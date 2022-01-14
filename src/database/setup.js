@@ -5,7 +5,7 @@ const { getClient } = require('./connection');
     2. add simple data
 */
 
-async function setup() {
+async function dbSetup() {
 	const client = await getClient();
 
 	try {
@@ -25,4 +25,4 @@ async function setup() {
 	}
 }
 
-module.exports = { setup }
+module.exports = { dbSetup }
