@@ -64,4 +64,4 @@ async function getPool() {
 	return pool;
 }
 
-module.exports = { getClient, getPool };
+module.exports = { getPool };
