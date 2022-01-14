@@ -41,10 +41,10 @@ const sql = require('mssql');
 
 const dbConfig = {
 	server: 'localhost', //process.env.SERVER_IP,
-	database: process.env.DATABASE,
-	user: process.env.DATABASE_USERNAME,
-	password: process.env.PASSWORD,
-	port: parseInt(process.env.PORT),
+	database: 'master', //process.env.DATABASE,
+	user: 'sa', //process.env.DATABASE_USERNAME,
+	password: '', //process.env.PASSWORD,
+	port: 1433, //parseInt(process.env.PORT),
 	options: {
 		encrypt: false,
 		enableArithAbort: true,
