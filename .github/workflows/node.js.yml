@@ -14,8 +14,8 @@ jobs:
         options: -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=pass1234" -p 1433:1433
         #env:
         #  SA_PASSWORD: pass123
-        ports:
-          - 1433:1433
+        #ports:
+        #  - 1433:1433
     
       # Label used to access the service container
       postgres:
