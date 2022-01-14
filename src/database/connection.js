@@ -1,3 +1,4 @@
+/*
 const { Client } = require('pg');
 
 let client;
@@ -34,5 +35,33 @@ async function getClient() {
 
 	return client;
 }
+*/
 
-module.exports = { getClient };
+const sql = require('mssql');
+
+const dbConfig = {
+	server: process.env.SERVER_IP,
+	database: process.env.DATABASE,
+	user: process.env.DATABASE_USERNAME,
+	password: process.env.PASSWORD,
+	port: parseInt(process.env.PORT),
+	options: {
+		encrypt: false,
+		enableArithAbort: true,
+	},
+};
+
+let pool;
+
+async function getPool() {
+	if (pool === undefined) {
+		pool = new sql.ConnectionPool(dbConfig);
+
+		await pool.connect();
+		pool.on('error', console.error);
+	}
+
+	return pool;
+}
+
+module.exports = { getClient, getPool };

@@ -1,15 +1,15 @@
-const { getClient } = require('./database/connection');
+const { getPool } = require('./database/connection');
 
 async function getPersons() {
-	const client = await getClient();
+	const pool = await getPool();
 
 	try {
-		const result = await client.query('SELECT * FROM Persons');
-		return result.rows;
+		const result = await pool.query`SELECT * FROM Persons`;
+		return result.recordset;
 	} catch (error) {
 		console.error(error);
 	} finally {
-		await client.end();
+		// await client.end();
 	}
 }
 
