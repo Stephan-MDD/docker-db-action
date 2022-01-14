@@ -12,6 +12,7 @@
 		"test": "jest --detectOpenHandles"
 	},
 	"jest": {
-		"globalSetup": "./test/setup.js"
+		"globalSetup": "./test/setup.js",
+		"globalTeardown": "./test/teardown.js"
 	}
 }
