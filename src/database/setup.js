@@ -8,21 +8,17 @@ const { getClient } = require('./connection');
 async function dbSetup() {
 	const client = await getClient();
 
-	try {
-		const result = await client.query(`
-            CREATE TABLE Persons (
-                name varchar(255),
-                age int
-            );
+    await client.query(`
+        CREATE TABLE Persons (
+            name varchar(255),
+            age int
+        );
 
-            INSERT INTO Persons
-            VALUES ('Stephan', 26), ('Melissa', 25);
-        `);
+        INSERT INTO Persons
+        VALUES ('Stephan', 26), ('Melissa', 25);
+    `);
 
-		return result.rows;
-	} catch (error) {
-		console.error(error);
-	}
+    await client.end();
 }
 
 module.exports = { dbSetup }
