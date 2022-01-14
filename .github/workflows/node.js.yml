@@ -1,41 +1,16 @@
-name: PostgreSQL Service Example
+name: MSSQL Service Action
 on: push
 
 jobs:
-  # Label of the runner job
   runner-job:
-    # You must use a Linux environment when using service containers or container jobs
     runs-on: ubuntu-latest
 
-    # Service containers to run with `runner-job`
     services:
       mssql:
         image: mcr.microsoft.com/mssql/server:2019-latest
         options: -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=Pass1234" -p 1433:1433
-        #env:
-        #  SA_PASSWORD: pass123
-        #ports:
-        #  - 1433:1433
-    
-      # Label used to access the service container
-      postgres:
-        # Docker Hub image
-        image: postgres
-        # Provide the password for postgres
-        env:
-          POSTGRES_PASSWORD: postgres
-        # Set health checks to wait until postgres has started
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-        ports:
-          # Maps tcp port 5432 on service container to the host
-          - 5432:5432
 
     steps:    
-      # Downloads a copy of the code in your repository before running CI tests
       - name: Check out repository code
         uses: actions/checkout@v2
 
@@ -51,8 +26,6 @@ jobs:
             ${{ runner.os }}-build-
             ${{ runner.os }}-
 
-      # Performs a clean installation of all dependencies in the `package.json` file
-      # For more information, see https://docs.npmjs.com/cli/ci.html
       - name: Install dependencies
         run: yarn
 
@@ -60,7 +33,8 @@ jobs:
         run: yarn test
 
         env:
-          # The hostname used to communicate with the PostgreSQL service container
-          POSTGRES_HOST: localhost
-          # The default PostgreSQL port
-          POSTGRES_PORT: 5432
+          SERVER_IP: localhost
+          DATABASE: master
+          DATABASE_USERNAME: sa
+          PASSWORD: Pass1234
+          PORT: 1433
