@@ -22,6 +22,11 @@ const { getPool } = require('./connection');
 //     await client.end();
 // }
 
+/*
+DBCC CLONEDATABASE (db_dev, db_copy)
+ALTER DATABASE db_copy SET READ_WRITE WITH NO_WAIT
+*/
+
 async function dbSetup() {
 	const pool = await getPool();
 

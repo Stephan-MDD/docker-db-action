@@ -40,7 +40,7 @@ async function getClient() {
 const sql = require('mssql');
 
 const dbConfig = {
-	server: process.env.SERVER_IP,
+	server: 'localhost', //process.env.SERVER_IP,
 	database: process.env.DATABASE,
 	user: process.env.DATABASE_USERNAME,
 	password: process.env.PASSWORD,
