@@ -10,7 +10,7 @@ jobs:
     # Service containers to run with `runner-job`
     services:
       mssql:
-        image: mssql
+        image: mcr.microsoft.com/mssql/server:2019-latest
         #env:
         #  SA_PASSWORD: pass123
         ports:
