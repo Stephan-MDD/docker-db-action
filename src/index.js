@@ -9,7 +9,7 @@ async function getPersons() {
 	} catch (error) {
 		console.error(error);
 	} finally {
-		// await client.end();
+		await pool.close();
 	}
 }
 
